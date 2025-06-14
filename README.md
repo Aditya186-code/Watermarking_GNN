@@ -2,11 +2,6 @@
 
 This project implements Graph Neural Networks (GNN) with various models and loss functions.
 
-## Prerequisites
-
-- Python 3.12.3
-- pip
-
 ## Setup
 
 1. Clone the repository:
