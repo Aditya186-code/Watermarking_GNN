@@ -14,7 +14,7 @@ def main():
     results = {}
     
     # Define all available models and datasets
-    all_model_types = ['GCN', 'GAT']
+    all_model_types = ['GCN', 'GAT', 'GraphSAGE']
     all_dataset_names = ['Cora', 'Pubmed']
     
     # Determine which models and datasets to run

@@ -34,7 +34,7 @@ def run_watermarking(dataset_name, model_type='GCN', nodes_per_class=1, hidden_d
     print()
 
     # Initialize model
-    model = get_model(model_type, dataset.num_features, hidden_dim, dataset.num_classes + 1, device)
+    model = get_model(model_type, dataset.num_features, hidden_dim, dataset.num_classes, device)
     print(f"🧠 Model initialized: {model_type}")
 
     # Pre-train the clean model
@@ -73,6 +73,10 @@ def run_watermarking(dataset_name, model_type='GCN', nodes_per_class=1, hidden_d
     trigger_indices, target_labels = select_poisoning_nodes(
         model, data, dataset.num_classes, target_label=dataset.num_classes)
     
+    #Previous model just found the poisoning nodes, with the help of that information we are now again initializing the mode
+    # +1 is done as trigger_nodes are assigned a new label(not in the dataset)
+    model = get_model(model_type, dataset.num_features, hidden_dim, dataset.num_classes + 1, device)
+
     # Print selected nodes for each class
     print(f"Selected {len(trigger_indices)} trigger nodes:")
     
